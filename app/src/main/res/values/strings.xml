@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Login</string>
+    <string name="Username_text">Username</string>
+    <string name="password_text">password</string>
+    <string name="attempts_text">attempts</string>
+    <string name="login_button">LOGIN</string>
+    <string name="first_text">FIRST</string>
+    <string name="second_text">SECOND</string>
+    <string name="third_text">THIRD</string>
+    <string name="fourth_text">FOURTH</string>
+    <string name="fifth_text">FIFTH</string>
+    <string name="sixth_text">SIXTH</string>
+    <string name="seventh_text">SEVENTH</string>
+    <string name="eighth_text">EIGHTH</string>
+    <string name="app_id">289374974793349</string>
+</resources>
