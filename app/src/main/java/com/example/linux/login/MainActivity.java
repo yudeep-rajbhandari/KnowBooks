@@ -21,19 +21,22 @@ import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import static android.R.attr.data;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText username;
     private EditText password;
-    private TextView attempts;
+
     private Button Login;
     int login_attempts = 5;
     DatabaseHelper mydb;
     private Button signup;
-    private LoginButton loginButton;
     private CallbackManager callbackManager;
+    private TextView info;
+    private LoginButton loginButton;
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -43,54 +46,51 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(this.getApplicationContext());
+       FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
-       callbackManager = CallbackManager.Factory.create();
 
-        loginButton = (LoginButton) findViewById(R.id.login_button);
+
+            //FacebookSdk.sdkInitialize(getApplicationContext());
+            callbackManager = CallbackManager.Factory.create();
+
+
+            info = (TextView)findViewById(R.id.info);
+            loginButton = (LoginButton)findViewById(R.id.login_button);
+
+            loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+                @Override
+                public void onSuccess(LoginResult loginResult) {
+                    Intent user_final = new Intent("com.example.linux.login.user_final");
+                    startActivity(user_final);
+                }
+
+                @Override
+                public void onCancel() {
+                    info.setText("Login attempt cancelled.");
+                }
+
+                @Override
+                public void onError(FacebookException e) {
+                    info.setText("Login attempt failed.");
+                }
+            });
+
+
+
         onbuttonclick();
         mydb = new DatabaseHelper(this);
 
     }
-
-   /*loginButton.registerCallback(callbackManager, new FacebookCallback() {
-
-
-        @Override
-        public void onSuccess(LoginResult loginResult) {
-
-            Intent i = new Intent(Login.this, MainActivity.class);
-            startActivity(i);
-            System.out.print("Logged in");
-
-        }
-
-        @Override
-        public void onCancel() {
-            // App code
-
-        }
-
-        @Override
-        public void onError(FacebookException exception) {
-            // App code
-            Log.i("Error" , "Error");
-        }
-
-
-    });
-}
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
-}
 
 
 
-*/
+
+
 
     public void onbuttonclick() {
 
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         String user = username.getText().toString();
         password = (EditText) findViewById(R.id.editText_password);
         String pass = password.getText().toString();
-        attempts = (TextView) findViewById(R.id.textView_attempt1);
+
         Login = (Button) findViewById(R.id.button_login);
         signup = (Button) findViewById(R.id.button_signup);
 
@@ -126,6 +126,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
 
 
 }
