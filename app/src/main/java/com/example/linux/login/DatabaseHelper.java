@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.jar.Attributes;
 
 /**
@@ -85,5 +87,31 @@ return b;
             return true;
     }
 
+
+    public List<String> getAllLabels(){
+        List<String> list = new ArrayList<String>();
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+
+        // Select All Query
+        String selectQuery = "Select * from " +TABLE_NAME;
+
+
+        Cursor cursor = sqLiteDatabase.rawQuery(selectQuery, null);//selectQuery,selectedArguments
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                String NAME = cursor.getString(1);
+                list.add(NAME);
+                //list.add(cursor.getString(1));//adding 2nd column data
+            } while (cursor.moveToNext());
+        }
+        // closing connection
+        cursor.close();
+        sqLiteDatabase.close();
+
+        // returning lables
+        return list;
+    }
 
 }

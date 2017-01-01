@@ -13,4 +13,26 @@
     <string name="seventh_text">SEVENTH</string>
     <string name="eighth_text">EIGHTH</string>
     <string name="app_id">289374974793349</string>
+
+        <string-array name="department">
+            <item>CE</item>
+            <item>CS</item>
+            <item>EE</item>
+
+        </string-array>
+    <string-array name="semester">
+        <item>1st</item>
+        <item>2nd</item>
+        <item>3rd</item>
+        <item>4th</item>
+        <item>5th</item>
+        <item>6th</item>
+        <item>7th</item>
+        <item>8th</item>
+
+
+
+    </string-array>
+
+
 </resources>

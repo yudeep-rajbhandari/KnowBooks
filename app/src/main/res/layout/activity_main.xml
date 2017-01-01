@@ -76,16 +76,6 @@
 
 
     <TextView
-        android:text="attempts:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText_password"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_alignStart="@+id/textView3"
-        android:layout_marginTop="26dp"
-        android:id="@+id/textView_attempts" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView_attempts"
@@ -115,14 +105,5 @@
         android:layout_below="@+id/button_login"
         android:layout_alignRight="@+id/editText_user"
         android:layout_alignEnd="@+id/editText_user" />
-
-    <TextView
-        android:text="info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView_attempt1"
-        android:layout_toRightOf="@+id/button_signup"
-        android:layout_toEndOf="@+id/button_signup"
-        android:id="@+id/info" />
 
 </RelativeLayout>
